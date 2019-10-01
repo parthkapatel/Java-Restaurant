@@ -12,6 +12,7 @@ and open the template in the editor.
         <link rel="stylesheet" type="text/css" href="registrationcss.css">
     </head>
     <body>
+        <div class="form_div">
             <form action="RegisterServlet" method="POST">
                 <table border="0">
                     <thead>
@@ -46,11 +47,13 @@ and open the template in the editor.
                                 </textarea></td>
                         </tr>
                         <tr>
-                            <td colspan="2"><input type="submit" value="Register" name="btn_register" />&nbsp;
-                                <input type="submit" value="LogIn" name="btn_login" formaction="login.jsp"/></td>
+                            <td colspan="2"><input type="submit" value="LogIn" name="btn_login" formaction="login.jsp"/>&nbsp;
+                                <input type="submit" value="Register" name="btn_register" />
+                                </td>
                         </tr>
                     </tbody>
                 </table>
             </form>
+        </div>
     </body>
 </html>
