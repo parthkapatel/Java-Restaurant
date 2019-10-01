@@ -49,7 +49,7 @@ public class LoginServlet extends HttpServlet {
                 Class.forName("com.mysql.jdbc.Driver");
             } catch (ClassNotFoundException ex) {
                 System.out.println(ex);
-                System.out.println("Nimesh");
+                System.out.println("Parth");
                 
             }
             
