@@ -77,7 +77,7 @@ public class LoginServlet extends HttpServlet {
                     response.setHeader("Pragma", "no-cache");
                     response.setDateHeader("Expires", 0); 
                     pr.print("<html><script>alert('LogIn Successful');</script></html>");
-                    RequestDispatcher rd=request.getRequestDispatcher("restaurants.jsp");
+                    RequestDispatcher rd=request.getRequestDispatcher("res_home.jsp");
                     rd.include(request, response);
                     count=0;
                 }
