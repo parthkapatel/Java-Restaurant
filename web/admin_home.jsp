@@ -15,6 +15,7 @@
             {
                 border: groove;
                 border-width: 1px;
+                border-color: black;
                 width: 100px;
                 padding: 10px;
                 display: inline;
@@ -25,6 +26,8 @@
             }
             .add_rci:hover{
                 background-color: black;
+                border-radius: 5px;
+                
                 color: white;
                  box-shadow: 5px 8px #888888; 
                
