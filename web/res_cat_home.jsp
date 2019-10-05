@@ -22,6 +22,7 @@
                 border-width: 1px;
                 border-radius: 15px;
                 background-color: aliceblue;
+               
             }
             h1{
                 border: groove;
@@ -32,6 +33,14 @@
                 margin: 10px; 
                 border-radius: 15px;
                 text-align: center;
+                text-shadow: 2px 5px 5px #FF0000;
+                text-transform: capitalize;
+                transition: 1s;
+                
+            }
+            h1:hover
+            {
+                letter-spacing: 2px;
                 
             }
             
@@ -48,6 +57,7 @@
             .res:hover
             {
                 background-color: aqua;
+                
             }
             h3{
                 transition: 1s;
@@ -73,7 +83,7 @@
         </style>
     </head>
     <body>
-        <form>
+        <form action="order_conf">
             <div class="maindiv">
                 <h1><%= session.getAttribute("rname") %> Restaurant</h1>
                 <%
@@ -98,7 +108,9 @@
                                while(rs2.next())
                                {
                             %>
-                            <h3><input type="checkbox"> &nbsp; <%= rs2.getString(1) %> ----- <%= rs2.getString(2) %>  </h3>
+                            <h3><input type="checkbox" name="item" value="<%= rs2.getString(1) %> <%= rs2.getString(2) %>" /> &nbsp; <%= rs2.getString(1) %> ----- <%= rs2.getString(2) %> 
+                                
+                            </h3>
                            <%
                                }
                                

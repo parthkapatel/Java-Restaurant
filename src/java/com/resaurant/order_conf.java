@@ -1,13 +1,13 @@
+package com.resaurant;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.resaurant;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,8 +19,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author Nimesh
  */
-@WebServlet(name = "res_homeServlet", urlPatterns = {"/res_homeServlet"})
-public class res_homeServlet extends HttpServlet {
+@WebServlet(name = "order_conf",urlPatterns = {"/order_conf"})
+public class order_conf extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,15 +34,21 @@ public class res_homeServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String id = request.getParameter("rid");
-        String name = request.getParameter("rname");
-        HttpSession session = request.getSession();
-        session.setAttribute("rid", id);
-        session.setAttribute("rname", name);
-        PrintWriter out = response.getWriter(); 
-        RequestDispatcher rd = request.getRequestDispatcher("res_cat_home.jsp");
-        rd.forward(request, response);
-        
+        String item[] = request.getParameterValues("item") ;
+       PrintWriter out = response.getWriter();
+       HttpSession session = request.getSession();
+       
+        out.print(session.getAttribute("rname")+" Restaurant<br/>");
+       out.print("Your Order List:<br/>");
+       int i=0;
+       
+       for(String value:item)
+       {
+           i++;
+           
+           out.print(i+"&nbsp &nbsp"+value);
+           out.print("<br/>");
+       }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
