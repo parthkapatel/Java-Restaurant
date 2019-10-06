@@ -35,20 +35,20 @@ public class order_conf extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String item[] = request.getParameterValues("item") ;
-       PrintWriter out = response.getWriter();
-       HttpSession session = request.getSession();
+        PrintWriter out = response.getWriter();
+        HttpSession session = request.getSession();
        
         out.print(session.getAttribute("rname")+" Restaurant<br/>");
-       out.print("Your Order List:<br/>");
-       int i=0;
+        out.print("Your Order List:<br/>");
+        int i=0;
        
-       for(String value:item)
-       {
-           i++;
-           
-           out.print(i+"&nbsp &nbsp"+value);
-           out.print("<br/>");
-       }
+        for(String value:item)
+        {
+            i++;
+
+            out.print(i+"&nbsp &nbsp"+value);
+            out.print("<br/>");
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
