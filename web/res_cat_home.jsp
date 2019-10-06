@@ -15,7 +15,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title><%= session.getAttribute("rname") %> Restaurant</title>
         <style>
             .maindiv{
                 border: groove;
@@ -80,59 +80,70 @@
                 margin-top: 0px;
                    
             }
+            
+            #btnsubmit{
+                width:200px;
+                height:50px;
+                border-radius: 10px;
+                background-color:lawngreen;
+                outline: none;
+                color:brown;
+                font-size:20px;
+                font-weight:bold;
+            }
         </style>
     </head>
     <body>
-        <form action="order_conf">
+        <form action="order_confirm.jsp">
             <div class="maindiv">
                 <h1><%= session.getAttribute("rname") %> Restaurant</h1>
                 <%
-            try{
-                Class.forName("com.mysql.jdbc.Driver");
-                Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/restaurant","root","");
-                Statement st = cn.createStatement();    
-                String q1 = "SELECT mc.c_id,mc.c_name FROM res_to_category rc inner join manage_menu_category mc on rc.c_id=mc.c_id WHERE `r_id`="+session.getAttribute("rid");
-                ResultSet rs1 = st.executeQuery(q1);
-                while(rs1.next())
-                { 
+                        try{
+                            Class.forName("com.mysql.jdbc.Driver");
+                            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/restaurant","root","");
+                            Statement st = cn.createStatement();    
+                            String q1 = "SELECT mc.c_id,mc.c_name FROM res_to_category rc inner join manage_menu_category mc on rc.c_id=mc.c_id WHERE `r_id`="+session.getAttribute("rid");
+                            ResultSet rs1 = st.executeQuery(q1);
+                            while(rs1.next())
+                            { 
+
+                               %>
+
+                               <div class="res">
+                                   <h2><%= rs1.getString(2) %></h2>
+                                   <div>
+                                       <%
+                                           String q2 = "SELECT i.i_name,i_price FROM item_master i inner join manage_menu_category mc on i_fall_category=mc.c_id WHERE c_id="+rs1.getString(1);
+                                           Statement st2 = cn.createStatement();
+                                           ResultSet rs2 = st2.executeQuery(q2);
+                                           while(rs2.next())
+                                           {
+                                        %>
+                                        <h3><input type="checkbox" name="item" value="<%= rs2.getString(1) %> <%= rs2.getString(2) %>" /> &nbsp; <%= rs2.getString(1) %> ----- <%= rs2.getString(2) %> 
+
+                                        </h3>
+                                       <%
+                                           }
+
+                                       %>
+                                   </div>
+                               </div>
+
+                               <%
+
+
+
+                            }
+                        }
+                        catch(SQLException ex)
+                        {
+                            out.print(ex);
+                        }
                     
-                   %>
-                   
-                   <div class="res">
-                       <h2><%= rs1.getString(2) %></h2>
-                       <div>
-                           <%
-                               String q2 = "SELECT i.i_name,i_price FROM item_master i inner join manage_menu_category mc on i_fall_category=mc.c_id WHERE c_id="+rs1.getString(1);
-                               Statement st2 = cn.createStatement();
-                               ResultSet rs2 = st2.executeQuery(q2);
-                               while(rs2.next())
-                               {
-                            %>
-                            <h3><input type="checkbox" name="item" value="<%= rs2.getString(1) %> <%= rs2.getString(2) %>" /> &nbsp; <%= rs2.getString(1) %> ----- <%= rs2.getString(2) %> 
-                                
-                            </h3>
-                           <%
-                               }
-                               
-                           %>
-                       </div>
-                   </div>
-                   
-                   <%
-                       
-                  
-                   
-                }
-            }
-            catch(SQLException ex)
-            {
-                out.print(ex);
-            }
-                    
-        %>
+                %>
             </div>
             <center>
-                <input type="submit" value="Place Order" name="Place Order" style="margin:100px" />
+                <input type="submit" value="Place Order" id="btnsubmit" name="Place Order" style="margin:100px" />
             </center>
         </form>
     </body>
