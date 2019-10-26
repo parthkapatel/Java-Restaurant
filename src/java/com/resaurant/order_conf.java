@@ -8,6 +8,7 @@ package com.resaurant;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.StringTokenizer;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -37,18 +38,33 @@ public class order_conf extends HttpServlet {
         String item[] = request.getParameterValues("item") ;
         PrintWriter out = response.getWriter();
         HttpSession session = request.getSession();
-       
-        out.print(session.getAttribute("rname")+" Restaurant<br/>");
-        out.print("Your Order List:<br/>");
-        int i=0;
-       
-        for(String value:item)
+        out.print("<center><b style='font-size:25px'><h1>"+session.getAttribute("rname")+" Restaurant</h1></b></center><br/>");
+        if(item==null)
         {
-            i++;
-
-            out.print(i+"&nbsp &nbsp"+value);
-            out.print("<br/>");
+            out.print("<b style='font-size:30px;color:red;'> Plz Choice Any item from the Restaurant </b>");
         }
+        else
+        {
+            out.print("<b style='font-size:30px'> Your Order Summary:</b><br/><br/>");
+            int i=0;
+            String v=null;
+            int n=0;
+            StringTokenizer st1=null;
+            for(String value:item)
+            {
+                i++;           
+                out.print("<b style='margin-left:5%;'>"+i+".</b>&nbsp &nbsp;"+value);
+                out.print("<br/>");
+                st1 = new StringTokenizer(value, " ");
+                  while(st1.hasMoreTokens())
+                  {
+                    v=st1.nextToken();
+                  }
+                  n=n+Integer.parseInt(v);
+            }
+           out.println("<br/><b style='margin-left:4%;'>Your Cart Value : &#8377;"+n+"</b>");
+        }
+       
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

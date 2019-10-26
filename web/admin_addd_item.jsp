@@ -1,22 +1,21 @@
 <%-- 
-    Document   : admin_add_cat
-    Created on : Oct 5, 2019, 2:10:59 PM
-    Author     : Nimesh
+    Document   : admin_addd_item
+    Created on : Oct 26, 2019, 2:46:26 PM
+    Author     : Parth KaPatel
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.Connection"%>
-<%@page import="java.io.PrintWriter"%>
 <%@page import="java.sql.SQLException"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Add Category</title>
-         <style>
+        <title>Add New Item</title>
+        <style>
             .maindiv{
                 border: groove;
                 border-width: 1px;
@@ -69,8 +68,8 @@
     </head>
     <body>
         <div class="maindiv">
-            <h1>ADMIN</h1>
-            <form action="AddCatServlet" style="text-align: center;" >
+            <h1>Add New Item</h1>
+            <form style="text-align: center;" method="POST" action="AddNewItemServlet">
                 
                 <div class="res_add" style="text-align: center">
                     
@@ -79,39 +78,17 @@
                         <tbody>
                             <tr>
                                 <td colspan="2" style="text-align: center">
-                                    <h2>Add New Category To the Restaurant </h2>
+                                    <h2>Add New Item </h2>
                                 </td>
                                
                             </tr>
                             <tr>
-                                <td> Select Restaurant: </td>
-                                <td> 
-                                    <select name="drdrid"  style="width: 175px">
-                                        <option value="1">...Select Restaurant...</option>
-                                        <%
-                                            try{
-                                                Class.forName("com.mysql.jdbc.Driver");
-                                                Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/restaurant","root","");
-                                                Statement st = cn.createStatement();    
-                                                String q1 = "SELECT r_id,r_name FROM manage_restaurant";
-                                                ResultSet rs1 = st.executeQuery(q1);
-                                                while(rs1.next())
-                                                { 
-
-                                        %>
-                                        
-                                        <option value="<%= rs1.getString(1) %>"><%= rs1.getString(2) %></option>
-                                         <%  
-                                                }
-                                            }
-                                            catch(SQLException ex)
-                                            {
-                                                out.print(ex);
-                                            }
-
-                                        %>
-                                    </select>
-                                </td>
+                                <td> Enter Item Name: </td>
+                                <td> <input type="text" name="txtitemname" /></td>
+                            </tr>
+                            <tr>
+                                <td> Enter Item Price </td>
+                                <td> <input type="text" name="txtitemprice" /></td>
                             </tr>
                             <tr>
                                 <td> Select Category : </td>
@@ -146,8 +123,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="2" style="text-align: center"> <input type="submit" class="button"  value="Add Category" name="Add Restaurant" /></td>
-                               
+                                <td colspan="2" style="text-align: center"> <input class="button" type="submit" value="Add New Item" name="Add New Item" /></td>
                             </tr>
                         </tbody>
                     </table>
@@ -160,3 +136,4 @@
         </div>
     </body>
 </html>
+

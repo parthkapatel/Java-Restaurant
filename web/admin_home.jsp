@@ -16,34 +16,36 @@
                 border: groove;
                 border-width: 1px;
                 border-color: black;
-                width: 100px;
-                padding: 10px;
+                width: 200px;
+                height: 100px;
+                padding: 25px;
                 display: inline;
                 color: black;
                 transition: 1s;
-                margin: 10px 10px 0px 10px;
-                 box-shadow: 5px 8px mediumslateblue; 
+                margin: 30px 15px 0px 15px;
+                box-shadow: 2px 2px #888888;
             }
             .add_rci:hover{
                 background-color: black;
-                border-radius: 5px;
+                border-radius: 20px;
                 
                 color: white;
-                 box-shadow: 5px 8px #888888; 
+                  
+                 box-shadow: 5px 4px mediumslateblue;
                
                 
             }
             
             a{
                 text-decoration: none;
-               
             }
             .maindiv{
                 border: groove;
                 border-width: 1px;
                 border-radius: 15px;
                 height: 500px;
-                
+                background-color: aliceblue;
+                border-color: tomato;
                
             }
             h1{
@@ -70,22 +72,65 @@
     <body>
         <div class="maindiv">
             <h1>ADMIN</h1>
-
-            <a href="admin_add_res.jsp">
-                <div class="add_rci">
-                    Add Restarant
+            <br>
+            <br>
+            <a href="admin_add_res.jsp" >
+                <div class="add_rci" >
+                    Add New Restarant
                 </div>
             </a>
+             <a href="admin_addd_category.jsp">
+                <div class="add_rci">
+                   Add New Category
+                </div>
+            </a>    
+            <a href="admin_addd_item.jsp">
+                <div class="add_rci">
+                   Add New Item
+                </div>
+            </a>  
             <a href="admin_add_cat.jsp">   
-            <div class="add_rci">
-                Add Category
-            </div>
+                <div class="add_rci">
+                    Assign Category
+                </div>
             </a>
              <a href="admin_add_item.jsp">
-            <div class="add_rci">
-               Add Item
-            </div>
+                <div class="add_rci">
+                   Assign Item
+                </div>
             </a>    
+           <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <a href="view_res.jsp">
+                <div class="add_rci">
+                   View Restaurant
+                </div>
+            </a>  
+            <a href="view_cat.jsp">
+                <div class="add_rci">
+                   View Category
+                </div>
+            </a>  
+            
+            <a href="view_item.jsp">
+                <div class="add_rci">
+                   View Items
+                </div>
+            </a>  
+            <a href="view_order.jsp">
+                <div class="add_rci">
+                   View Order
+                </div>
+            </a>  
+            <a href="user_details.jsp">
+                <div class="add_rci">
+                   View User Details
+                </div>
+            </a>  
         
       </div>
     </body>

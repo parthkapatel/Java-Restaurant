@@ -18,17 +18,18 @@
     </head>
     <body>
         <%  
-            String id = request.getParameter("id");
+            String cid = request.getParameter("cid");
+            String rid = request.getParameter("rid");
             String buffer = "<select name='drditem' ><option value='-1' >Select Item</option>";
             try{
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/restaurant","root","");
                 Statement st = cn.createStatement();    
-                String q1 = "SELECT i.i_id,i.i_name,i.i_price FROM item_master i inner JOIN manage_menu_category m on m.c_id=i.i_fall_category where m.c_id='"+id+"'";
+                String q1 = "SELECT i_id,i_name FROM item_master i inner join res_to_category rc on i.i_fall_category=rc.c_id WHERE rc.c_id='"+cid+"' and rc.r_id='"+rid+"'";
                 ResultSet rs1 = st.executeQuery(q1);
                 while(rs1.next())
                 { 
-                    buffer += "<option value='"+ rs1.getString(1)+"'> "+rs1.getString(2) +"----"+ rs1.getString(3)+"</option>";
+                    buffer += "<option value='"+ rs1.getString(1)+"'> "+rs1.getString(2)+"</option>";
                 }
                 buffer += "</select>";
                 response.getWriter().println(buffer);

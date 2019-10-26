@@ -1,7 +1,7 @@
 <%-- 
-    Document   : admin_add_res
-    Created on : Oct 5, 2019, 1:52:50 PM
-    Author     : Nimesh
+    Document   : admin_addd_category
+    Created on : Oct 26, 2019, 1:40:40 PM
+    Author     : Parth KaPatel
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Add New Category</title>
         <style>
             .maindiv{
                 border: groove;
@@ -63,8 +63,8 @@
     </head>
     <body>
         <div class="maindiv">
-            <h1>Add Restaurant</h1>
-            <form style="text-align: center;" action="AddResSevlet">
+            <h1>Add New Category</h1>
+            <form style="text-align: center;" method="POST" action="AddCategoryServlet">
                 
                 <div class="res_add" style="text-align: center">
                     
@@ -73,25 +73,20 @@
                         <tbody>
                             <tr>
                                 <td colspan="2" style="text-align: center">
-                                    <h2>Add New Restaurant </h2>
+                                    <h2>Add New Category </h2>
                                 </td>
                                
                             </tr>
                             <tr>
-                                <td> Enter Restaurant Name: </td>
-                                <td> <input type="text" name="txtresname" /></td>
+                                <td> Enter Category Name: </td>
+                                <td> <input type="text" name="txtcategoryname" /></td>
                             </tr>
                             <tr>
-                                <td> Enter Restaurant Address </td>
-                                <td> <input type="text" name="txtresaddress" /></td>
+                                <td> Enter Category Description </td>
+                                <td> <input type="text" name="txtcategorydesc" /></td>
                             </tr>
                             <tr>
-                                <td> Enter Restaurant Contact </td>
-                                <td> <input type="text" name="txtrescontact" /></td>
-                            </tr>
-                            <tr>
-                                <td colspan="2" style="text-align: center"> <input class="button" type="submit" value="Add Restaurant" name="Add Restaurant" /></td>
-                               
+                                <td colspan="2" style="text-align: center"> <input class="button" type="submit" value="Add Category" name="Add Category" /></td>
                             </tr>
                         </tbody>
                     </table>
