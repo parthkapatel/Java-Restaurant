@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Add New Restaurant</title>
         <style>
             .maindiv{
                 border: groove;
@@ -59,11 +59,20 @@
                 border-radius: 15px;
                 box-shadow: 3px 3px #888888;
             }
+            
+            #btnhome{
+                float:right;
+                margin:20px 20px;
+                padding:15px;
+                text-decoration: none;
+                color:white;
+            }
         </style>
     </head>
     <body>
         <div class="maindiv">
-            <h1>Add Restaurant</h1>
+            <a id="btnhome" href="admin_home.jsp">Home</a>
+            <h1>Add New Restaurant</h1>
             <form style="text-align: center;" action="AddResSevlet">
                 
                 <div class="res_add" style="text-align: center">

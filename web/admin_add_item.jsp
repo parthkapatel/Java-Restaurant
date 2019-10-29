@@ -69,6 +69,14 @@
                 border-radius: 15px;
                 box-shadow: 3px 3px #888888;
             }
+            
+            #btnhome{
+                float:right;
+                margin:20px 20px;
+                padding:15px;
+                text-decoration: none;
+                color:white;
+            }
         </style>
         
             <script>
@@ -139,7 +147,8 @@
     </head>
     <body oncontextmenu="return false;">
         <div class="maindiv">
-            <h1>Add Item</h1>
+            <a id="btnhome" href="admin_home.jsp">Home</a>
+            <h1>Assign Item</h1>
             <form style="text-align: center" action="AddItemServlet" method="POST">
                 
                 <div class="res_add" style="text-align: center">

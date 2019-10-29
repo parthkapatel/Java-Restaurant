@@ -1,17 +1,21 @@
 <%-- 
-    Document   : admin_addd_category
-    Created on : Oct 26, 2019, 1:40:40 PM
+    Document   : view_category
+    Created on : Oct 29, 2019, 3:46:48 PM
     Author     : Parth KaPatel
 --%>
 
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.Connection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Add New Category</title>
+        <title>View Category Details</title>
         <style>
-            .maindiv{
+             .maindiv{
                 border: groove;
                 border-width: 1px;
                 border-radius: 15px;    
@@ -38,7 +42,7 @@
             }
             .res_add
             {
-                margin:10px 500px 0px 500px;
+                margin:10px 400px 0px 400px;
                 
             }
             .button{
@@ -67,44 +71,54 @@
                 text-decoration: none;
                 color:white;
             }
+            
+            
         </style>
     </head>
     <body>
         <div class="maindiv">
+            
             <a id="btnhome" href="admin_home.jsp">Home</a>
-            <h1>Add New Category</h1>
-            <form style="text-align: center;" method="POST" action="AddCategoryServlet">
+            <h1>Category Details</h1>
                 
                 <div class="res_add" style="text-align: center">
-                    
-                    <table style="border: 0px">
+                    <center>
                         
-                        <tbody>
-                            <tr>
-                                <td colspan="2" style="text-align: center">
-                                    <h2>Add New Category </h2>
-                                </td>
-                               
-                            </tr>
-                            <tr>
-                                <td> Enter Category Name: </td>
-                                <td> <input type="text" name="txtcategoryname" /></td>
-                            </tr>
-                            <tr>
-                                <td> Enter Category Description </td>
-                                <td> <input type="text" name="txtcategorydesc" /></td>
-                            </tr>
-                            <tr>
-                                <td colspan="2" style="text-align: center"> <input class="button" type="submit" value="Add Category" name="Add Category" /></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                        <table border="1" >
+                            <tbody>
+                                <tr>
+                                    <td>ID</td>
+                                    <td>Name</td>
+                                    <td>Description</td>
+                                </tr>
+                                <%
+                                    Class.forName("com.mysql.jdbc.Driver");
+                                    Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/restaurant","root","");
+                                    Statement st = cn.createStatement();
+                                    String q = "SELECT * FROM manage_menu_category";
+                                    ResultSet rs = st.executeQuery(q);
+                                    while(rs.next())
+                                    {
+                                %>
+                                <tr>
+                                    <td><%=rs.getString(1) %></td>
+                                    <td><%=rs.getString(2) %></td>
+                                    <td><%=rs.getString(3) %></td>
+                                    <td><a href="updatecategory.jsp?id=<%= rs.getString(1)%>">Update</td>
+                                    <td><a href="deletecategoryservlet?id=<%= rs.getString(1)%>">Delete</td>
+                                </tr>
+                                <%
+                                    }
+                                    cn.close();
+                                %>
+                            </tbody>
+                        </table>
 
+                    </center>
                    <br/>
                     
-                </div>
-                
-            </form>
+                </div>   
         </div>
     </body>
 </html>
+

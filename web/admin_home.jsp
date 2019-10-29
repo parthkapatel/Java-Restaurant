@@ -105,12 +105,12 @@
             <br>
             <br>
             <br>
-            <a href="view_res.jsp">
+            <a href="view_restaurant.jsp">
                 <div class="add_rci">
                    View Restaurant
                 </div>
             </a>  
-            <a href="view_cat.jsp">
+            <a href="view_category.jsp">
                 <div class="add_rci">
                    View Category
                 </div>
@@ -130,7 +130,18 @@
                 <div class="add_rci">
                    View User Details
                 </div>
-            </a>  
+            </a> 
+             <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <a href="view_RCI.jsp">
+                <div class="add_rci">
+                   View Restaurant-Category-Items Details
+                </div>
+            </a> 
         
       </div>
     </body>

@@ -64,10 +64,19 @@
                 border-radius: 15px;
                 box-shadow: 3px 3px #888888;
             }
+            
+            #btnhome{
+                float:right;
+                margin:20px 20px;
+                padding:15px;
+                text-decoration: none;
+                color:white;
+            }
         </style>
     </head>
     <body>
         <div class="maindiv">
+            <a id="btnhome" href="admin_home.jsp">Home</a>
             <h1>Add New Item</h1>
             <form style="text-align: center;" method="POST" action="AddNewItemServlet">
                 
